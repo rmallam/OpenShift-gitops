@@ -20,9 +20,9 @@ spec:
   release:
     image: quay.io/openshift-release-dev/ocp-release:4.14.29-multi
   pullSecret:
-    name: pullsecret-cluster-{{ .name }}
+    name: pullsecret-cluster-new
   sshKey:
-    name: sshkey-cluster-{{ .name }}
+    name: sshkey-cluster-new
   networking:
     clusterNetwork:
       - cidr: 10.132.0.0/14
