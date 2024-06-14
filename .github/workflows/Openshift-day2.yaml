@@ -65,7 +65,7 @@ jobs:
     - name: Install RHSI
       run: |
         oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller
-        oc apply -f applicationset.yaml
+        oc apply -f applicationset.yaml -n openshift-gitops
 
     # - name: get link linkTokenCreate
     #   run: oc get secret skupper-link-token -n skupper -o yaml | grep -v creationTimestamp | grep -v namespace | grep -v uid | grep -v resourceVersion | grep -v "kubectl.kubernetes.io/last-applied-configuration"  > /tmp/connectiontoken.yaml
