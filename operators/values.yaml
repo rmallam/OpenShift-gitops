@@ -34,7 +34,7 @@ acm:  ## Deploy multiclusterhub CRD
 acs:
   enabled: false
 sealedsecrets:
-  enabled: false
+  enabled: false ## learn here
 gitops:
   enabled: false
 knative:
