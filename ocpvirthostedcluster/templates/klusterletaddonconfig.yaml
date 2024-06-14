@@ -1,11 +1,12 @@
+{{- range .Values.hosted.clusters }}
 apiVersion: agent.open-cluster-management.io/v1
 kind: KlusterletAddonConfig
 metadata:
-  name: 'new'
-  namespace: 'new'
+  name: '{{ .name }}'
+  namespace: '{{ .name }}'
 spec:
-  clusterName: 'new'
-  clusterNamespace: 'new'
+  clusterName: '{{ .name }}'
+  clusterNamespace: '{{ .name }}'
   clusterLabels:
     cloud: BareMetal
     vendor: OpenShift
@@ -19,3 +20,4 @@ spec:
     enabled: true
   iamPolicyController:
     enabled: true
+{{- end }}

@@ -1,9 +1,9 @@
----
+{{- range .Values.hosted.clusters }}
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
   creationTimestamp: null
-  name: sshkey-cluster-new
+  name: sshkey-cluster-{{ .name }}
   namespace: clusters
 spec:
   encryptedData:
@@ -11,5 +11,6 @@ spec:
   template:
     metadata:
       creationTimestamp: null
-      name: sshkey-cluster-new
+      name: sshkey-cluster-{{ .name }}
       namespace: clusters
+{{- end }}

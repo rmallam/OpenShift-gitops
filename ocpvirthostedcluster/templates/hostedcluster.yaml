@@ -1,10 +1,11 @@
+{{- range .Values.hosted.clusters }}
 apiVersion: hypershift.openshift.io/v1beta1
 kind: HostedCluster
 metadata:
-  name: 'new'
+  name: {{ .name }}
   namespace: 'clusters'
   labels:
-    "cluster.open-cluster-management.io/clusterset": 'managed'
+    "cluster.open-cluster-management.io/clusterset": '{{ .clusterset }}'
 spec:
   etcd:
     managed:
@@ -17,9 +18,9 @@ spec:
   release:
     image: quay.io/openshift-release-dev/ocp-release:4.14.29-multi
   pullSecret:
-    name: pullsecret-cluster-new
+    name: pullsecret-cluster-{{ .name }}
   sshKey:
-    name: sshkey-cluster-new
+    name: sshkey-cluster-{{ .name }}
   networking:
     clusterNetwork:
       - cidr: 10.132.0.0/14
@@ -31,7 +32,7 @@ spec:
     type: KubeVirt
     kubevirt:
       baseDomainPassthrough: true
-  infraID: 'new'
+  infraID: {{ .name }}
   services:
   - service: OAuthServer
     servicePublishingStrategy:
@@ -48,3 +49,4 @@ spec:
   - service: APIServer
     servicePublishingStrategy:
       type: LoadBalancer 
+{{- end }}

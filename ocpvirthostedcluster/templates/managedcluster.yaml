@@ -1,3 +1,4 @@
+{{- range .Values.hosted.clusters }}
 apiVersion: cluster.open-cluster-management.io/v1
 kind: ManagedCluster
 metadata:
@@ -8,9 +9,10 @@ metadata:
   labels:
     cloud: BareMetal
     vendor: OpenShift
-    name: 'new'
-    cluster.open-cluster-management.io/clusterset: 'managed'
+    name: '{{ .name }}'
+    cluster.open-cluster-management.io/clusterset: '{{ .clusterset }}'
     environment: 'dev'
-  name: 'new'
+  name: '{{ .name }}'
 spec:
   hubAcceptsClient: true
+{{- end }}

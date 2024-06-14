@@ -1,11 +1,12 @@
+{{- range .Values.hosted.clusters }}
 apiVersion: hypershift.openshift.io/v1beta1
 kind: NodePool
 metadata:
-  name: 'devpool'
+  name: {{ .nodepool.name }}
   namespace: 'clusters'
 spec:
   arch: amd64
-  clusterName: 'new'
+  clusterName: {{ .name }}
   replicas: 3
   management:
     autoRepair: false
@@ -14,11 +15,11 @@ spec:
     type: KubeVirt
     kubevirt:
       compute:
-        cores: 2
-        memory: 8Gi
+{{- toYaml .nodepool.compute | nindent 8  }} 
       rootVolume:
         type: Persistent
         persistent:
           size: 32Gi
   release:
     image: quay.io/openshift-release-dev/ocp-release:4.14.29-multi
+{{- end }}
