@@ -45,6 +45,3 @@ spec:
   - service: Ignition
     servicePublishingStrategy:
       type: Route
-  - service: Ingress
-    servicePublishingStrategy:
-      type: LoadBalancer
