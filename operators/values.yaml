@@ -21,11 +21,11 @@ subscriptions:
     namespace: openshift-serverless
     channel: stable
     source: redhat-operators
-  - name: acm-operator-subscription
+  - name: advanced-cluster-management
     namespace: open-cluster-management
     channel: release-2.10
     source: redhat-operators
-  - name: hco-operatorhub
+  - name: kubevirt-hyperconverged
     namespace: openshift-cnv
     channel: stable
     source: redhat-operators
