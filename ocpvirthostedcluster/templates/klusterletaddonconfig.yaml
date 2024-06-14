@@ -1,4 +1,5 @@
 {{- range .Values.hosted.clusters }}
+---
 apiVersion: agent.open-cluster-management.io/v1
 kind: KlusterletAddonConfig
 metadata:

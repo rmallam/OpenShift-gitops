@@ -1,4 +1,6 @@
+
 {{- range .Values.hosted.clusters }}
+---
 apiVersion: hypershift.openshift.io/v1beta1
 kind: HostedCluster
 metadata:
