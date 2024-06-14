@@ -8,6 +8,7 @@ spec:
   destination:
     namespace: openshift-gitops
     server: 'https://kubernetes.default.svc'
+  project: default
   source:
     path: ocpvirthostedcluster
     repoURL: 'https://github.com/rmallam/OpenShift-gitops.git'
