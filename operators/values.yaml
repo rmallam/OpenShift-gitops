@@ -21,9 +21,9 @@ subscriptions:
     namespace: openshift-serverless
     channel: stable
     source: redhat-operators
-  - name: acm-sub
+  - name: acm-operator-subscription
     namespace: open-cluster-management
-    channel: stable
+    channel: release-2.10
     source: redhat-operators
   - name: hco-operatorhub
     namespace: openshift-cnv
