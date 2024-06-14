@@ -1,0 +1,17 @@
+{{- if eq .Values.sealedsecrets.enabled true }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hostedclusterocpvirt
+spec:
+  destination:
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    path: ocpvirthostedcluster
+    repoURL: 'https://github.com/rmallam/OpenShift-gitops.git'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      selfHeal: true
+{{- end }}
