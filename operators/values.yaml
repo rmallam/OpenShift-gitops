@@ -46,5 +46,7 @@ manageclustersonargo:  ## Add the hosted/managed clusters to argocd. clusterset 
    enabled: false
 hyperconverged:  ## Deploy openshift virt 
    enabled: true
+managedclusterset:
+    enable: true
 hostedclusterocpvirt:
    enabled: true

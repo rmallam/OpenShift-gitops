@@ -64,6 +64,7 @@ jobs:
 
     - name: Install RHSI
       run: |
+        oc apply -f install/ --recursive
         oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller
         oc apply -f applicationset.yaml -n openshift-gitops
 
