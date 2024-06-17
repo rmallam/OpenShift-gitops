@@ -49,4 +49,4 @@ hyperconverged:  ## Deploy openshift virt
 managedclusterset:
     enable: true
 hostedclusterocpvirt:
-   enabled: true
+   enabled: false
