@@ -62,9 +62,10 @@ jobs:
         namespace: ${{ env.OPENSHIFT_NAMESPACE }}
         kubeconfig: /tmp/aws
 
-    - name: Install RHSI
+    - name: Install Openshift-gitops
       run: |
         oc apply -f install/ --recursive
+        oc --insecure-skip-tls-verify=true  -n openshift-gitops wait --for=jsonpath='{.status.state}'=AtLatestKnown    subscription/openshift-gitops-operator --timeout=300s
         oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller
         oc apply -f applicationset.yaml -n openshift-gitops
 

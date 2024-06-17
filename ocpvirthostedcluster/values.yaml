@@ -8,11 +8,11 @@ hosted:
         compute:
           cores: 2
           memory: 8Gi
-    - name: second
-      clusterset: managed
-      nodepool:
-        name: testpool
-        type: KubeVirt
-        compute:
-          cores: 2
-          memory: 8Gi
+    # - name: second
+    #   clusterset: managed
+    #   nodepool:
+    #     name: testpool
+    #     type: KubeVirt
+    #     compute:
+    #       cores: 2
+    #       memory: 8Gi
