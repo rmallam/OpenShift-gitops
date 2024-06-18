@@ -1,0 +1,32 @@
+apps:
+  - name: rhsi
+    enabled: true
+  - name: operators
+    enabled: true
+  - name: ocpvirthostedcluster
+    enabled: true
+
+
+acm:  ## Deploy multiclusterhub CRD 
+  enabled: false
+acs:
+  enabled: false
+sealedsecrets:
+  enabled: false ## learn here
+gitops:
+  enabled: false
+knative:
+  enabled: false
+kafka:
+  enabled: false
+  dedicatedNode: false
+manageclustersonargo:  ## Add the hosted/managed clusters to argocd. clusterset defined for now is managed
+   enabled: false
+hyperconverged:  ## Deploy openshift virt 
+   enabled: false
+managedclusterset:
+    enable: false
+hostedclusterocpvirt:
+   enabled: false
+rhsi:
+  enabled: true
