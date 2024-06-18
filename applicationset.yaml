@@ -7,7 +7,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: default
   source:
-    path: operators
+    path: apps-of-apps
     repoURL: 'https://github.com/rmallam/OpenShift-gitops.git'
     targetRevision: HEAD
   syncPolicy:
