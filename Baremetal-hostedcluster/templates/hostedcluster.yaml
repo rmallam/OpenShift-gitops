@@ -1,0 +1,50 @@
+---
+apiVersion: hypershift.openshift.io/v1beta1
+kind: HostedCluster
+metadata:
+  name: 'hosted' 
+  namespace: 'hosted'
+  labels:
+    "cluster.open-cluster-management.io/clusterset": 'managed'
+spec:
+  release:
+    image: quay.io/openshift-release-dev/ocp-release:4.15.6-multi
+  pullSecret:
+    name: pullsecret-cluster-hosted # create a secret with pull secret - oc --kubeconfig ~/hypershift-lab/mgmt-kubeconfig -n openshift-config  extract secret/pull-secret --to=- 2>/dev/null
+  sshKey:
+    name: sshkey-cluster-hosted # create a secret with sshkey - oc --kubeconfig ~/hypershift-lab/mgmt-kubeconfig -n hardware-inventory  get infraenv/hosted -o jsonpath='{.spec.sshAuthorizedKey}'
+  networking:
+    clusterNetwork:
+      - cidr: 10.132.0.0/14
+    serviceNetwork:
+      - cidr: 172.31.0.0/16
+    networkType: OVNKubernetes
+  controllerAvailabilityPolicy: SingleReplica
+  infrastructureAvailabilityPolicy: SingleReplica
+  olmCatalogPlacement: management
+  platform:
+    type: Agent
+    agent:
+      agentNamespace: 'hardware-inventory' # namespace where the host inventory is configured
+  infraID: 'hosted'
+  dns:
+    baseDomain: 'hypershift.lab'
+  services:
+  - service: APIServer
+    servicePublishingStrategy:
+      type: LoadBalancer
+  - service: OAuthServer
+    servicePublishingStrategy:
+      type: Route
+  - service: OIDC
+    servicePublishingStrategy:
+      type: Route
+  - service: Konnectivity
+    servicePublishingStrategy:
+      type: Route
+  - service: Ignition
+    servicePublishingStrategy:
+      type: Route
+
+
+
