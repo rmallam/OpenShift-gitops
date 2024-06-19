@@ -26,7 +26,8 @@ spec:
         targetRevision: HEAD
         path: '{{ "{{" }}name{{ "}}" }}'
       destination:
-        namespace: default
+        name: '{{ "{{" }}name{{ "}}" }}'
+        namespace: '{{ "{{" }}namespace{{ "}}" }}'
         server: https://kubernetes.default.svc
       syncPolicy:
         automated:

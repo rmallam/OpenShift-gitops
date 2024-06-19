@@ -64,8 +64,9 @@ jobs:
 
     - name: Install Openshift-gitops
       run: |
-        oc apply -f install/ --recursive
+        oc apply -f install/ --recursive 
         oc --insecure-skip-tls-verify=true  -n openshift-gitops wait --for=jsonpath='{.status.state}'=AtLatestKnown subscription/openshift-gitops-operator --timeout=300s
+        sleep 30
         oc --insecure-skip-tls-verify=true -n openshift-gitops wait --for=condition=Ready pod -l app.kubernetes.io/name=openshift-gitops-application-controller --timeout=300s
         oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller
         oc --insecure-skip-tls-verify=true wait --for=condition=Established  crd applicationsets.argoproj.io --timeout=300s
