@@ -28,7 +28,6 @@ spec:
       destination:
         name: '{{ "{{" }}name{{ "}}" }}'
         namespace: '{{ "{{" }}namespace{{ "}}" }}'
-        server: https://kubernetes.default.svc
       syncPolicy:
         automated:
           prune: true
