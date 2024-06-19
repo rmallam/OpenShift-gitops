@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: bootstrap-appset
+  namespace: openshift-gitops
+spec:
+  generators:
+    - list:
+        elements:
+{{- range .Values.apps }}
+{{- if eq .enabled true }}
+          - name: {{ .name }}
+            namespace: {{ .namespace }}
+{{- end }}
+{{- end }}
+  template:
+    metadata:
+      name: '{{ "{{" }}name{{ "}}" }}'
+      namespace: '{{ "{{" }}namespace{{ "}}" }}'
+      finalizers:
+        - resources-finalizer.argocd.argoproj.io
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/rmallam/openshift-gitops.git
+        targetRevision: HEAD
+        path: '{{ "{{" }}name{{ "}}" }}'
+      destination:
+        namespace: default
+        server: https://kubernetes.default.svc
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+          allowEmpty: false
+        syncOptions:
+          - Validate=true
+          - CreateNamespace=true
+          - PrunePropagationPolicy=foreground
+          - PruneLast=true

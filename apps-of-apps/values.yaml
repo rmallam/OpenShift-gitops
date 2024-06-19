@@ -1,10 +1,13 @@
 apps:
   - name: rhsi
     enabled: true
+    namespace: skupper
   - name: operators
     enabled: true
+    namespace: openshift-gitops
   - name: ocpvirthostedcluster
-    enabled: true
+    enabled: false
+    namespace: openshift-gitops
 
 
 acm:  ## Deploy multiclusterhub CRD 
