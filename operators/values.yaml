@@ -29,6 +29,10 @@ subscriptions:
     namespace: openshift-cnv
     channel: stable
     source: redhat-operators
+  - name: kubernetes-nmstate-operator
+    namespace: openshift-nmstate
+    channel: stable
+    source: redhat-operators
 acm:  ## Deploy multiclusterhub CRD 
   enabled: false
 acs:
