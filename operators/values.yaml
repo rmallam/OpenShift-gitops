@@ -5,34 +5,57 @@ subscriptions:
     namespace: openshift-operators
     channel: stable
     source: redhat-operators
+    enabled: false 
   - name: servicemeshoperator
     namespace: openshift-operators
     channel: stable
     source: redhat-operators
+    enabled: false 
   - name: amq-streams
     namespace: openshift-operators
     channel: stable
     source: redhat-operators
+    enabled: false 
   - name: patch-operator
     namespace: patch-operator
     channel: alpha
     source: community-operators
+    enabled: false 
   - name: serverless-operator
     namespace: openshift-serverless
     channel: stable
     source: redhat-operators
+    enabled: false 
   - name: advanced-cluster-management
     namespace: open-cluster-management
     channel: release-2.10
     source: redhat-operators
+    enabled: false 
   - name: kubevirt-hyperconverged
     namespace: openshift-cnv
     channel: stable
     source: redhat-operators
+    enabled: true
+## NM state - provides declarative way of managing kube networks
   - name: kubernetes-nmstate-operator
     namespace: openshift-nmstate
     channel: stable
     source: redhat-operators
+    enabled: true
+## localstorage operator - for odf to use local storage from nodes
+  - name: local-storage-operator
+    namespace: openshift-local-storage
+    channel: stable
+    source: redhat-operators
+    enabled: trues
+## odf operator
+  - name: odf-operator
+    namespace: openshift-storage
+    channel: stable-4.15
+    source: redhat-operators
+    enabled: true
+
+
 acm:  ## Deploy multiclusterhub CRD 
   enabled: false
 acs:
