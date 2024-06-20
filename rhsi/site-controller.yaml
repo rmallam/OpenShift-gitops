@@ -104,6 +104,8 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
   labels:
     application: skupper-site-controller
   name: skupper-site-controller
@@ -118,6 +120,8 @@ roleRef:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "6"
   name: skupper-site-controller
 spec:
   replicas: 1
