@@ -5,51 +5,48 @@ subscriptions:
     namespace: openshift-operators
     channel: stable
     source: redhat-operators
-    enabled: false 
+    enabled: false
   - name: servicemeshoperator
     namespace: openshift-operators
     channel: stable
     source: redhat-operators
-    enabled: false 
+    enabled: false
   - name: amq-streams
     namespace: openshift-operators
     channel: stable
     source: redhat-operators
-    enabled: false 
+    enabled: false
   - name: patch-operator
     namespace: patch-operator
     channel: alpha
     source: community-operators
-    enabled: false 
+    enabled: false
   - name: serverless-operator
     namespace: openshift-serverless
     channel: stable
     source: redhat-operators
-    enabled: false 
+    enabled: false
   - name: advanced-cluster-management
     namespace: open-cluster-management
     channel: release-2.10
     source: redhat-operators
-    enabled: false 
+    enabled: false
   - name: kubevirt-hyperconverged
     namespace: openshift-cnv
     channel: stable
     source: redhat-operators
     enabled: true
-## NM state - provides declarative way of managing kube networks
-  - name: kubernetes-nmstate-operator
+  - name: kubernetes-nmstate-operator ## NM state - provides declarative way of managing kube networks
     namespace: openshift-nmstate
     channel: stable
     source: redhat-operators
     enabled: true
-## localstorage operator - for odf to use local storage from nodes
-  - name: local-storage-operator
+  - name: local-storage-operator ## localstorage operator - for odf to use local storage from nodes
     namespace: openshift-local-storage
     channel: stable
     source: redhat-operators
-    enabled: trues
-## odf operator
-  - name: odf-operator
+    enabled: true 
+  - name: odf-operator ## odf operator
     namespace: openshift-storage
     channel: stable-4.15
     source: redhat-operators
@@ -76,4 +73,6 @@ hyperconverged:  ## Deploy openshift virt
 managedclusterset:
     enable: true
 hostedclusterocpvirt:
+   enabled: false
+multiclusterhub:
    enabled: false
